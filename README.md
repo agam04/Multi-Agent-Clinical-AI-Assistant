@@ -131,7 +131,6 @@ At least one field is required.
 
 ```bash
 # Run full test suite (no model required — agents are mocked)
-pip install -r requirements-test.txt
 pytest
 ```
 
