@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multi-Agent Clinical AI Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in { animation: fadeIn 0.3s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .spinner { border: 3px solid #e5e7eb; border-top-color: #0d9488; border-radius: 50%; width: 20px; height: 20px; animation: spin 0.7s linear infinite; display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="bg-slate-100 min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center gap-3 shadow-sm">
+    <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">AI</div>
+    <div>
+      <h1 class="text-lg font-bold text-slate-800 leading-tight">Multi-Agent Clinical AI Assistant</h1>
+      <p class="text-xs text-slate-500">Local Inference · Apple Silicon · MedGemma 4B</p>
+    </div>
+    <div class="ml-auto flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+      <span class="text-xs text-slate-500">MedGemma 4B · Apple Silicon</span>
+    </div>
+  </header>
+
+  <div class="max-w-5xl mx-auto px-4 py-8 flex gap-6">
+
+    <!-- Left: Input panel -->
+    <div class="flex-1 min-w-0">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+        <h2 class="text-sm font-semibold text-slate-600 uppercase tracking-wide mb-4">New Query</h2>
+
+        <form id="analyze-form" novalidate class="space-y-4">
+          <div>
+            <label for="note" class="block text-sm font-medium text-slate-700 mb-1">
+              Clinical note or encounter transcript
+            </label>
+            <textarea id="note" name="note" rows="9"
+              class="w-full rounded-xl border border-slate-300 p-3 text-sm text-slate-800 placeholder-slate-400 resize-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              placeholder="Paste a clinical note, a doctor–patient transcript, or leave blank if submitting an image only..."></textarea>
+          </div>
+
+          <div>
+            <label for="image" class="block text-sm font-medium text-slate-700 mb-1">
+              Medical image <span class="text-slate-400 font-normal">(X-ray, MRI, CT — optional)</span>
+            </label>
+            <div id="drop-zone"
+              class="w-full rounded-xl border-2 border-dashed border-slate-300 p-4 text-center text-sm text-slate-500 cursor-pointer hover:border-teal-400 hover:bg-teal-50 transition">
+              <input type="file" id="image" name="image" accept="image/*" class="hidden" />
+              <span id="file-label">Click to upload or drag and drop</span>
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn"
+            class="w-full bg-teal-600 hover:bg-teal-700 active:bg-teal-800 text-white font-semibold py-2.5 px-4 rounded-xl shadow transition flex items-center justify-center gap-2">
+            <span id="btn-text">Analyze</span>
+            <span id="btn-spinner" class="spinner hidden"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Result panel -->
+      <div id="result-panel" class="hidden mt-6">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 fade-in">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-sm font-semibold text-slate-600 uppercase tracking-wide">Result</h2>
+            <span id="agent-badge" class="text-xs font-semibold px-3 py-1 rounded-full"></span>
+          </div>
+          <div id="result-content" class="text-sm text-slate-800"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: History panel -->
+    <div class="w-72 flex-shrink-0">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-sm font-semibold text-slate-600 uppercase tracking-wide">History</h2>
+          <button id="clear-history" class="text-xs text-slate-400 hover:text-red-500 transition">Clear</button>
+        </div>
+        <ul id="history-list" class="space-y-2 text-sm text-slate-500">
+          <li id="history-empty" class="text-xs text-slate-400 italic">No queries yet this session.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const form       = document.getElementById('analyze-form');
+    const noteField  = document.getElementById('note');
+    const imageField = document.getElementById('image');
+    const dropZone   = document.getElementById('drop-zone');
+    const fileLabel  = document.getElementById('file-label');
+    const submitBtn  = document.getElementById('submit-btn');
+    const btnText    = document.getElementById('btn-text');
+    const btnSpinner = document.getElementById('btn-spinner');
+    const resultPanel   = document.getElementById('result-panel');
+    const resultContent = document.getElementById('result-content');
+    const agentBadge    = document.getElementById('agent-badge');
+    const historyList   = document.getElementById('history-list');
+    const historyEmpty  = document.getElementById('history-empty');
+    const clearBtn      = document.getElementById('clear-history');
+
+    const history = [];
+
+    // ── File drag-and-drop ────────────────────────────────────────────────────
+    dropZone.addEventListener('click', () => imageField.click());
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('border-teal-400', 'bg-teal-50'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('border-teal-400', 'bg-teal-50'));
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('border-teal-400', 'bg-teal-50');
+      if (e.dataTransfer.files[0]) {
+        const dt = new DataTransfer();
+        dt.items.add(e.dataTransfer.files[0]);
+        imageField.files = dt.files;
+        fileLabel.textContent = e.dataTransfer.files[0].name;
+      }
+    });
+    imageField.addEventListener('change', () => {
+      fileLabel.textContent = imageField.files[0]?.name ?? 'Click to upload or drag and drop';
+    });
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+    function esc(text) {
+      if (!text) return '';
+      return String(text)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    function setLoading(on) {
+      submitBtn.disabled = on;
+      btnText.textContent = on ? 'Analyzing…' : 'Analyze';
+      btnSpinner.classList.toggle('hidden', !on);
+    }
+
+    const BADGE_STYLES = {
+      coding:        'bg-teal-100 text-teal-700',
+      documentation: 'bg-amber-100 text-amber-700',
+      imaging:       'bg-violet-100 text-violet-700',
+    };
+    const BADGE_LABELS = {
+      coding:        '⚕ ICD-10 Coding',
+      documentation: '📋 SOAP Documentation',
+      imaging:       '🩻 Radiology',
+    };
+
+    function renderResult(data) {
+      if (data.error) {
+        agentBadge.className = 'text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-700';
+        agentBadge.textContent = 'Error';
+        return `<p class="text-red-600">${esc(data.error)}</p>`;
+      }
+
+      agentBadge.className = `text-xs font-semibold px-3 py-1 rounded-full ${BADGE_STYLES[data.agent] ?? 'bg-slate-100 text-slate-600'}`;
+      agentBadge.textContent = BADGE_LABELS[data.agent] ?? data.agent;
+
+      if (data.agent === 'coding') {
+        if (!data.result?.length) return '<p class="text-slate-400 italic">No codes extracted.</p>';
+        return data.result.map(c => `
+          <div class="flex items-start gap-3 py-2 border-b border-slate-100 last:border-0">
+            <span class="font-mono font-semibold text-teal-700 bg-teal-50 px-2 py-0.5 rounded text-xs whitespace-nowrap">${esc(c.code)}</span>
+            <span class="text-slate-700">${esc(c.description)}</span>
+          </div>`).join('');
+      }
+
+      if (data.agent === 'documentation') {
+        const r = data.result;
+        return ['Subjective', 'Objective', 'Assessment', 'Plan'].map(key => `
+          <div class="mb-4">
+            <p class="text-xs font-bold uppercase tracking-wide text-amber-700 mb-1">${key}</p>
+            <p class="text-slate-700 leading-relaxed">${esc(r[key]) || '<span class="text-slate-400 italic">—</span>'}</p>
+          </div>`).join('');
+      }
+
+      if (data.agent === 'imaging') {
+        const r = data.result;
+        const fields = [
+          ['Technique', r.technique],
+          ['Findings', r.findings],
+          ['Impression', r.impression],
+          ['Recommendations', r.recommendations],
+        ];
+        if (r.answer_to_user_question) fields.push(['Answer', r.answer_to_user_question]);
+        return fields.map(([label, val]) => `
+          <div class="mb-4">
+            <p class="text-xs font-bold uppercase tracking-wide text-violet-700 mb-1">${label}</p>
+            <p class="text-slate-700 leading-relaxed">${esc(val) || '<span class="text-slate-400 italic">—</span>'}</p>
+          </div>`).join('');
+      }
+
+      return `<pre class="text-xs overflow-auto">${esc(JSON.stringify(data, null, 2))}</pre>`;
+    }
+
+    function addToHistory(query, agent) {
+      history.unshift({ query: query.slice(0, 60) + (query.length > 60 ? '…' : ''), agent });
+      if (history.length > 8) history.pop();
+      renderHistory();
+    }
+
+    function renderHistory() {
+      if (!history.length) {
+        historyEmpty.classList.remove('hidden');
+        return;
+      }
+      historyEmpty.classList.add('hidden');
+      const items = history.map(h => {
+        const style = BADGE_STYLES[h.agent] ?? 'bg-slate-100 text-slate-500';
+        const label = h.agent ? (BADGE_LABELS[h.agent] ?? h.agent) : 'Error';
+        return `<li class="rounded-lg bg-slate-50 p-2.5 border border-slate-100">
+          <p class="text-xs text-slate-700 mb-1 truncate">${esc(h.query || '(image only)')}</p>
+          <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full ${style}">${esc(label)}</span>
+        </li>`;
+      });
+      historyList.innerHTML = items.join('') + `<li id="history-empty" class="hidden"></li>`;
+    }
+
+    clearBtn.addEventListener('click', () => {
+      history.length = 0;
+      historyList.innerHTML = '<li id="history-empty" class="text-xs text-slate-400 italic">No queries yet this session.</li>';
+    });
+
+    // ── Form submit ───────────────────────────────────────────────────────────
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      const note  = noteField.value.trim();
+      const image = imageField.files[0];
+
+      if (!note && !image) {
+        resultPanel.classList.remove('hidden');
+        agentBadge.className = 'text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-700';
+        agentBadge.textContent = 'Error';
+        resultContent.innerHTML = '<p class="text-red-600">Please provide a clinical note or an image.</p>';
+        return;
+      }
+
+      setLoading(true);
+      resultPanel.classList.add('hidden');
+
+      const body = new FormData();
+      if (note)  body.append('note', note);
+      if (image) body.append('image', image);
+
+      try {
+        const res  = await fetch('/api/analyze', { method: 'POST', body });
+        const data = await res.json();
+        resultContent.innerHTML = renderResult(data);
+        resultPanel.classList.remove('hidden');
+        addToHistory(note, data.agent);
+      } catch (err) {
+        agentBadge.className = 'text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-700';
+        agentBadge.textContent = 'Error';
+        resultContent.innerHTML = '<p class="text-red-600">Network error — is the server running?</p>';
+        resultPanel.classList.remove('hidden');
+      } finally {
+        setLoading(false);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+# Core API
+fastapi>=0.116.0
+uvicorn>=0.35.0
+python-multipart>=0.0.20
+
+# Data validation
+pydantic>=2.11.0
+
+# Agent framework
+langgraph>=0.6.3
+langchain-core>=0.3.73
+langsmith>=0.4.13
+
+# Model inference (Apple Silicon only — requires Python 3.12, macOS 14+)
+mlx>=0.29.4
+mlx-lm>=0.26.3
+mlx-metal>=0.29.4
+mlx-vlm>=0.3.2
+
+# Image processing
+Pillow>=11.0.0
+numpy>=2.0.0
+
+# Config
+python-dotenv>=1.1.0
