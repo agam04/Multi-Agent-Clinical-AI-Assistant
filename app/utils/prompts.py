@@ -1,18 +1,9 @@
 from PIL import Image
-import numpy as np
 from typing import Optional
 from app.utils.logger import get_logger
+from app.utils.transforms import blank_image as _blank
 
 logger = get_logger(__name__)
-
-_BLANK_IMAGE = None
-
-
-def _blank() -> Image.Image:
-    global _BLANK_IMAGE
-    if _BLANK_IMAGE is None:
-        _BLANK_IMAGE = Image.fromarray(np.zeros((224, 224, 3), dtype=np.uint8))
-    return _BLANK_IMAGE
 
 
 def triage_prompt(note: Optional[str], image: Optional[Image.Image]) -> str:
@@ -50,12 +41,14 @@ Guidelines:
   - Draw codes from both the primary diagnosis and any documented comorbidities
   - Never duplicate a code; each should appear once
   - If a condition is ambiguous, omit rather than guess
+  - For each code, copy the exact span of text from the note (word-for-word, no
+    paraphrasing) into "evidence" so a reviewer can verify the assignment
   - Output ONLY a valid JSON array — no markdown, no prose, no extra keys
 
 Required format (double-quoted keys and values, codes derived solely from the note below):
 [
-  {{"code": "<ICD-10 code>", "description": "<condition as documented>"}},
-  {{"code": "<ICD-10 code>", "description": "<condition as documented>"}}
+  {{"code": "<ICD-10 code>", "description": "<condition as documented>", "evidence": "<verbatim phrase from the note supporting this code>"}},
+  {{"code": "<ICD-10 code>", "description": "<condition as documented>", "evidence": "<verbatim phrase from the note supporting this code>"}}
 ]
 
 Clinical note:

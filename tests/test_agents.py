@@ -85,7 +85,10 @@ class TestDiagnosticCoderAgent:
         # Pydantic coerces List[dict] → List[DiagnosticCode] on WorkflowState.result
         r = result.result
         codes_out = [c if isinstance(c, dict) else c.model_dump() for c in r]
-        assert codes_out == codes
+        # evidence defaults to None when the model omits it; compare core fields
+        for out, expected in zip(codes_out, codes):
+            assert out["code"] == expected["code"]
+            assert out["description"] == expected["description"]
 
     def test_parses_fenced_json(self, coding_state):
         codes = [{"code": "E11.9", "description": "Type 2 diabetes"}]
@@ -126,6 +129,29 @@ class TestDiagnosticCoderAgent:
         assert result.error is not None
         assert "MLX crash" in result.error
         assert result.result is None
+
+    def test_evidence_field_flows_through(self, coding_state):
+        codes = [{
+            "code": "E11.9",
+            "description": "Type 2 diabetes mellitus",
+            "evidence": "10-year history of type 2 diabetes mellitus",
+        }]
+        with patch("app.agents.coder.generate", return_value=_gen_response(json.dumps(codes))):
+            agent = self._make_agent()
+            result = agent.execute(coding_state)
+        assert result.error is None
+        c = result.result[0]
+        evidence = c.evidence if hasattr(c, "evidence") else c["evidence"]
+        assert evidence == "10-year history of type 2 diabetes mellitus"
+
+    def test_missing_evidence_defaults_to_none(self, coding_state):
+        codes = [{"code": "I10", "description": "Essential hypertension"}]
+        with patch("app.agents.coder.generate", return_value=_gen_response(json.dumps(codes))):
+            agent = self._make_agent()
+            result = agent.execute(coding_state)
+        c = result.result[0]
+        evidence = c.evidence if hasattr(c, "evidence") else c.get("evidence")
+        assert evidence is None
 
 
 # ── ClinicalDocumentationAgent ────────────────────────────────────────────────

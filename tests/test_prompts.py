@@ -47,6 +47,10 @@ class TestCodingPrompt:
         result = coding_prompt(None, None)
         assert isinstance(result, str)
 
+    def test_evidence_field_instructed(self):
+        result = coding_prompt("some note", None)
+        assert "evidence" in result
+
 
 class TestImagingPrompt:
     def test_returns_string(self):

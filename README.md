@@ -147,13 +147,23 @@ pytest
 
 ## Evaluation
 
-Run the ICD-10 evaluation against a 100-sample synthetic ground-truth dataset:
-
 ```bash
-python -m evaluations.eval_icd10
+python -m evaluations.eval_icd10          # full 100-sample run
+python -m evaluations.eval_icd10 --limit 10  # quick smoke test
 ```
 
-Outputs per-sample precision, recall, F1, and macro aggregates. Results are saved to `evaluations/eval_report.json`.
+Results on the included 100-sample synthetic ICD-10 dataset (MedGemma 4B 4-bit, Apple M-series, avg **3.1 s/sample**):
+
+| Metric | Exact code match | 3-char category match |
+|---|---|---|
+| Macro precision | 0.180 | 0.360 |
+| Macro recall | 0.180 | 0.360 |
+| **Macro F1** | **0.180** | **0.360** |
+| Exact match rate | 0.0% | — |
+
+**Reading the numbers:** "Exact" requires the full code to match (e.g. `G43.909`). "Category" rolls codes up to their 3-character prefix (`G43`) — the standard relaxed metric used in the ICD-10 coding literature, since a 4B local model often lands in the right disease family but misses the specificity digits. The category-level F1 of **0.36** means the model identifies the correct disease categories in roughly 1 in 3 slots — reasonable for a 4-bit quantised 4B model running fully locally with no fine-tuning.
+
+Per-sample results (precision, recall, F1, both metrics, latency) are saved to `evaluations/eval_results.json`.
 
 ---
 

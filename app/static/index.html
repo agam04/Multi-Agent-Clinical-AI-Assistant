@@ -107,6 +107,7 @@
     const clearBtn      = document.getElementById('clear-history');
 
     const history = [];
+    let lastSubmittedNote = '';
 
     // ── File drag-and-drop ────────────────────────────────────────────────────
     dropZone.addEventListener('click', () => imageField.click());
@@ -132,6 +133,37 @@
       return String(text)
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    // Render the source note with each code's evidence span wrapped in <mark>,
+    // so a reviewer can see exactly which text drove each ICD-10 assignment.
+    function highlightEvidence(noteText, codes) {
+      if (!noteText) return '';
+      const spans = codes.map(c => c.evidence).filter(Boolean);
+      if (!spans.length) return '';
+
+      let html = esc(noteText);
+      const seen = new Set();
+      let matched = 0;
+      spans.forEach(span => {
+        const escSpan = esc(String(span).trim());
+        if (!escSpan || seen.has(escSpan)) return;
+        seen.add(escSpan);
+        const idx = html.indexOf(escSpan);
+        if (idx !== -1) {
+          matched++;
+          html = html.slice(0, idx)
+            + `<mark class="bg-teal-100 text-teal-900 rounded px-0.5">${escSpan}</mark>`
+            + html.slice(idx + escSpan.length);
+        }
+      });
+      if (!matched) return '';
+
+      return `
+        <div class="mb-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1.5">Source note · evidence highlighted</p>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-600 text-xs leading-relaxed whitespace-pre-wrap">${html}</div>
+        </div>`;
     }
 
     function setLoading(on) {
@@ -163,11 +195,16 @@
 
       if (data.agent === 'coding') {
         if (!data.result?.length) return '<p class="text-slate-400 italic">No codes extracted.</p>';
-        return data.result.map(c => `
-          <div class="flex items-start gap-3 py-2 border-b border-slate-100 last:border-0">
-            <span class="font-mono font-semibold text-teal-700 bg-teal-50 px-2 py-0.5 rounded text-xs whitespace-nowrap">${esc(c.code)}</span>
-            <span class="text-slate-700">${esc(c.description)}</span>
+        const notePanel = highlightEvidence(lastSubmittedNote, data.result);
+        const rows = data.result.map(c => `
+          <div class="py-2.5 border-b border-slate-100 last:border-0">
+            <div class="flex items-start gap-3">
+              <span class="font-mono font-semibold text-teal-700 bg-teal-50 px-2 py-0.5 rounded text-xs whitespace-nowrap">${esc(c.code)}</span>
+              <span class="text-slate-700">${esc(c.description)}</span>
+            </div>
+            ${c.evidence ? `<p class="mt-1.5 ml-1 text-xs text-slate-500 italic border-l-2 border-teal-300 pl-2.5 leading-relaxed">&ldquo;${esc(c.evidence)}&rdquo;</p>` : ''}
           </div>`).join('');
+        return notePanel + rows;
       }
 
       if (data.agent === 'documentation') {
@@ -232,6 +269,7 @@
 
       const note  = noteField.value.trim();
       const image = imageField.files[0];
+      lastSubmittedNote = note;
 
       if (!note && !image) {
         resultPanel.classList.remove('hidden');

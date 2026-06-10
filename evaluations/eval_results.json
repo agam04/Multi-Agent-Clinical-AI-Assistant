@@ -1,0 +1,2015 @@
+{
+  "aggregate": {
+    "n_samples": 100,
+    "exact_match_rate": 0.0,
+    "macro_precision": 0.18,
+    "macro_recall": 0.18,
+    "macro_f1": 0.18,
+    "category_macro_precision": 0.36,
+    "category_macro_recall": 0.36,
+    "category_macro_f1": 0.36,
+    "avg_latency_s": 3.06
+  },
+  "samples": [
+    {
+      "sample_id": 1,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.62,
+      "error": null
+    },
+    {
+      "sample_id": 2,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 3.02,
+      "error": null
+    },
+    {
+      "sample_id": 3,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.13,
+      "error": null
+    },
+    {
+      "sample_id": 4,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.12,
+      "error": null
+    },
+    {
+      "sample_id": 5,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.26,
+      "error": null
+    },
+    {
+      "sample_id": 6,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.26,
+      "error": null
+    },
+    {
+      "sample_id": 7,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.26,
+      "error": null
+    },
+    {
+      "sample_id": 8,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.25,
+      "error": null
+    },
+    {
+      "sample_id": 9,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.13,
+      "error": null
+    },
+    {
+      "sample_id": 10,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.05,
+      "error": null
+    },
+    {
+      "sample_id": 11,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.14,
+      "error": null
+    },
+    {
+      "sample_id": 12,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.16,
+      "error": null
+    },
+    {
+      "sample_id": 13,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.15,
+      "error": null
+    },
+    {
+      "sample_id": 14,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.17,
+      "error": null
+    },
+    {
+      "sample_id": 15,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.16,
+      "error": null
+    },
+    {
+      "sample_id": 16,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.3,
+      "error": null
+    },
+    {
+      "sample_id": 17,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.13,
+      "error": null
+    },
+    {
+      "sample_id": 18,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.21,
+      "error": null
+    },
+    {
+      "sample_id": 19,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.13,
+      "error": null
+    },
+    {
+      "sample_id": 20,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.32,
+      "error": null
+    },
+    {
+      "sample_id": 21,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.33,
+      "error": null
+    },
+    {
+      "sample_id": 22,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.35,
+      "error": null
+    },
+    {
+      "sample_id": 23,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.2,
+      "error": null
+    },
+    {
+      "sample_id": 24,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.12,
+      "error": null
+    },
+    {
+      "sample_id": 25,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.14,
+      "error": null
+    },
+    {
+      "sample_id": 26,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.21,
+      "error": null
+    },
+    {
+      "sample_id": 27,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 3.11,
+      "error": null
+    },
+    {
+      "sample_id": 28,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.15,
+      "error": null
+    },
+    {
+      "sample_id": 29,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.25,
+      "error": null
+    },
+    {
+      "sample_id": 30,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.11,
+      "error": null
+    },
+    {
+      "sample_id": 31,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.31,
+      "error": null
+    },
+    {
+      "sample_id": 32,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.17,
+      "error": null
+    },
+    {
+      "sample_id": 33,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.38,
+      "error": null
+    },
+    {
+      "sample_id": 34,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.24,
+      "error": null
+    },
+    {
+      "sample_id": 35,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.47,
+      "error": null
+    },
+    {
+      "sample_id": 36,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.23,
+      "error": null
+    },
+    {
+      "sample_id": 37,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.06,
+      "error": null
+    },
+    {
+      "sample_id": 38,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.06,
+      "error": null
+    },
+    {
+      "sample_id": 39,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.06,
+      "error": null
+    },
+    {
+      "sample_id": 40,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.92,
+      "error": null
+    },
+    {
+      "sample_id": 41,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.92,
+      "error": null
+    },
+    {
+      "sample_id": 42,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.93,
+      "error": null
+    },
+    {
+      "sample_id": 43,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.9,
+      "error": null
+    },
+    {
+      "sample_id": 44,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.89,
+      "error": null
+    },
+    {
+      "sample_id": 45,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.89,
+      "error": null
+    },
+    {
+      "sample_id": 46,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.81,
+      "error": null
+    },
+    {
+      "sample_id": 47,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.81,
+      "error": null
+    },
+    {
+      "sample_id": 48,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.9,
+      "error": null
+    },
+    {
+      "sample_id": 49,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.89,
+      "error": null
+    },
+    {
+      "sample_id": 50,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.9,
+      "error": null
+    },
+    {
+      "sample_id": 51,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.8,
+      "error": null
+    },
+    {
+      "sample_id": 52,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.85,
+      "error": null
+    },
+    {
+      "sample_id": 53,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.81,
+      "error": null
+    },
+    {
+      "sample_id": 54,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.86,
+      "error": null
+    },
+    {
+      "sample_id": 55,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.85,
+      "error": null
+    },
+    {
+      "sample_id": 56,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.02,
+      "error": null
+    },
+    {
+      "sample_id": 57,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.9,
+      "error": null
+    },
+    {
+      "sample_id": 58,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.9,
+      "error": null
+    },
+    {
+      "sample_id": 59,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.9,
+      "error": null
+    },
+    {
+      "sample_id": 60,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.82,
+      "error": null
+    },
+    {
+      "sample_id": 61,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.83,
+      "error": null
+    },
+    {
+      "sample_id": 62,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.81,
+      "error": null
+    },
+    {
+      "sample_id": 63,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.93,
+      "error": null
+    },
+    {
+      "sample_id": 64,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.91,
+      "error": null
+    },
+    {
+      "sample_id": 65,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.98,
+      "error": null
+    },
+    {
+      "sample_id": 66,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.9,
+      "error": null
+    },
+    {
+      "sample_id": 67,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.9,
+      "error": null
+    },
+    {
+      "sample_id": 68,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.82,
+      "error": null
+    },
+    {
+      "sample_id": 69,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.03,
+      "error": null
+    },
+    {
+      "sample_id": 70,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.84,
+      "error": null
+    },
+    {
+      "sample_id": 71,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.04,
+      "error": null
+    },
+    {
+      "sample_id": 72,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.92,
+      "error": null
+    },
+    {
+      "sample_id": 73,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.95,
+      "error": null
+    },
+    {
+      "sample_id": 74,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 3.12,
+      "error": null
+    },
+    {
+      "sample_id": 75,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.45,
+      "error": null
+    },
+    {
+      "sample_id": 76,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.97,
+      "error": null
+    },
+    {
+      "sample_id": 77,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.89,
+      "error": null
+    },
+    {
+      "sample_id": 78,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.94,
+      "error": null
+    },
+    {
+      "sample_id": 79,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.85,
+      "error": null
+    },
+    {
+      "sample_id": 80,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.02,
+      "error": null
+    },
+    {
+      "sample_id": 81,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.98,
+      "error": null
+    },
+    {
+      "sample_id": 82,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.13,
+      "error": null
+    },
+    {
+      "sample_id": 83,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 2.99,
+      "error": null
+    },
+    {
+      "sample_id": 84,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.99,
+      "error": null
+    },
+    {
+      "sample_id": 85,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.03,
+      "error": null
+    },
+    {
+      "sample_id": 86,
+      "truth_codes": [
+        "M25.561",
+        "S83.911A"
+      ],
+      "predicted_codes": [
+        "M25.5",
+        "S22.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.0,
+      "error": null
+    },
+    {
+      "sample_id": 87,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.13,
+      "error": null
+    },
+    {
+      "sample_id": 88,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.04,
+      "error": null
+    },
+    {
+      "sample_id": 89,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.2,
+      "error": null
+    },
+    {
+      "sample_id": 90,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.17,
+      "error": null
+    },
+    {
+      "sample_id": 91,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 3.04,
+      "error": null
+    },
+    {
+      "sample_id": 92,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.08,
+      "error": null
+    },
+    {
+      "sample_id": 93,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.17,
+      "error": null
+    },
+    {
+      "sample_id": 94,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 2.99,
+      "error": null
+    },
+    {
+      "sample_id": 95,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.05,
+      "error": null
+    },
+    {
+      "sample_id": 96,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.97,
+      "error": null
+    },
+    {
+      "sample_id": 97,
+      "truth_codes": [
+        "I21.9",
+        "R07.9"
+      ],
+      "predicted_codes": [
+        "I21.9",
+        "I64.9"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 0.5,
+      "category_recall": 0.5,
+      "category_f1": 0.5,
+      "latency_s": 3.19,
+      "error": null
+    },
+    {
+      "sample_id": 98,
+      "truth_codes": [
+        "I95.1",
+        "R42"
+      ],
+      "predicted_codes": [
+        "I10",
+        "I42.9"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.05,
+      "error": null
+    },
+    {
+      "sample_id": 99,
+      "truth_codes": [
+        "K35.80",
+        "R10.9",
+        "R11.0"
+      ],
+      "predicted_codes": [
+        "R16.2"
+      ],
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "category_precision": 0.0,
+      "category_recall": 0.0,
+      "category_f1": 0.0,
+      "latency_s": 3.09,
+      "error": null
+    },
+    {
+      "sample_id": 100,
+      "truth_codes": [
+        "G43.909",
+        "R51"
+      ],
+      "predicted_codes": [
+        "G43.0",
+        "R51"
+      ],
+      "exact_match": false,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "category_precision": 1.0,
+      "category_recall": 1.0,
+      "category_f1": 1.0,
+      "latency_s": 2.98,
+      "error": null
+    }
+  ]
+}

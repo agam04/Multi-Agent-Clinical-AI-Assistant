@@ -1,12 +1,10 @@
-from PIL import Image
-import numpy as np
 import json
 from app.agents.core import MedicalAgentBase
 from app.utils.model_registry import get_vision_model
 from app.utils.prompts import imaging_prompt
 from app.graph.schema import WorkflowState
 from app.utils.logger import get_logger
-from app.utils.transforms import extract_json
+from app.utils.transforms import extract_json, blank_image
 from langsmith.run_helpers import traceable
 from mlx_vlm.prompt_utils import apply_chat_template
 from mlx_vlm import generate
@@ -23,11 +21,7 @@ class RadiologyAgent(MedicalAgentBase):
     def infer(self, state: WorkflowState) -> str:
         raw_image = state.payload.get("image", None)
         note = state.payload.get("note", None)
-        image = [
-            raw_image
-            if raw_image is not None
-            else Image.fromarray(np.zeros((224, 224, 3), dtype=np.uint8))
-        ]
+        image = [raw_image or blank_image()]
         logger.info("RadiologyAgent.infer — has_image: %s, has_note: %s", raw_image is not None, note is not None)
         prompt = imaging_prompt(raw_image, note)
         formatted = apply_chat_template(self.processor, self.config, prompt, num_images=1)

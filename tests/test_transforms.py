@@ -70,6 +70,24 @@ class TestExtractJson:
         assert isinstance(result, list)
         assert any(r["code"] == "K35.80" for r in result)
 
+    def test_partial_recovery_with_evidence_field(self):
+        # Truncated array where each object also carries an "evidence" key
+        raw = ('[{"code": "E11.9", "description": "Diabetes", '
+               '"evidence": "type 2 diabetes mellitus"}, {"code": "R10')
+        result = json.loads(extract_json(raw))
+        assert any(r["code"] == "E11.9" for r in result)
+        recovered = next(r for r in result if r["code"] == "E11.9")
+        assert recovered["evidence"] == "type 2 diabetes mellitus"
+
+    def test_recovers_soap_object_wrapped_in_prose(self):
+        # Whole-string parse fails (prose around it); brace matcher recovers the object
+        raw = ('Here is the note you requested:\n'
+               '{"Subjective": "Headache", "Objective": "Normal", '
+               '"Assessment": "Tension", "Plan": "Rest"} — hope this helps!')
+        result = json.loads(extract_json(raw))
+        assert result["Subjective"] == "Headache"
+        assert result["Plan"] == "Rest"
+
     def test_unrecoverable_garbage_returns_empty_list(self):
         raw = "Sorry, I cannot provide medical codes."
         result = json.loads(extract_json(raw))

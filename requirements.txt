@@ -23,3 +23,6 @@ numpy>=2.0.0
 
 # Config
 python-dotenv>=1.1.0
+
+# Testing (agents mock MLX, so the suite runs on any platform)
+pytest>=8.0.0

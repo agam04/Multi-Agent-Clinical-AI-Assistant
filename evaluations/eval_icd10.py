@@ -20,8 +20,24 @@ DATASET_PATH = Path(__file__).parent / "synthetic_icd10_dataset.json"
 DEFAULT_OUT = Path(__file__).parent / "eval_results.json"
 
 
-def _code_set(entries: List[Dict]) -> set:
-    return {e["code"].strip().upper() for e in entries if e.get("code")}
+def _code_set(entries: List[Any]) -> set:
+    """Collect normalised codes from either ground-truth dicts or DiagnosticCode objects."""
+    codes = set()
+    for e in entries:
+        code = e.get("code") if isinstance(e, dict) else getattr(e, "code", None)
+        if code:
+            codes.add(code.strip().upper())
+    return codes
+
+
+def _category_set(codes: set) -> set:
+    """Roll codes up to their 3-character ICD-10 category (the part before the dot).
+
+    e.g. G43.909 → G43, K35.80 → K35, R51 → R51. Category-level scoring credits
+    the model for identifying the right disease family even when it misses the
+    finer specificity digits — the standard relaxed metric for ICD-10 coding.
+    """
+    return {c.split(".")[0] for c in codes}
 
 
 def _prf(predicted: set, truth: set) -> Dict[str, float]:
@@ -52,7 +68,9 @@ def run_evaluation(limit: int | None = None, out_path: Path = DEFAULT_OUT) -> Di
 
     sample_results = []
     total_p = total_r = total_f1 = 0.0
+    cat_total_p = cat_total_r = cat_total_f1 = 0.0
     exact_matches = 0
+    total_latency = 0.0
 
     for i, sample in enumerate(dataset, 1):
         note = sample["note"]
@@ -68,6 +86,7 @@ def run_evaluation(limit: int | None = None, out_path: Path = DEFAULT_OUT) -> Di
         t0 = time.perf_counter()
         output = agent.execute(state)
         elapsed = time.perf_counter() - t0
+        total_latency += elapsed
 
         if output.error or not output.result:
             predicted_codes = set()
@@ -77,6 +96,7 @@ def run_evaluation(limit: int | None = None, out_path: Path = DEFAULT_OUT) -> Di
             error = None
 
         metrics = _prf(predicted_codes, truth_codes)
+        cat_metrics = _prf(_category_set(predicted_codes), _category_set(truth_codes))
         exact = predicted_codes == truth_codes
 
         if exact:
@@ -84,6 +104,9 @@ def run_evaluation(limit: int | None = None, out_path: Path = DEFAULT_OUT) -> Di
         total_p += metrics["precision"]
         total_r += metrics["recall"]
         total_f1 += metrics["f1"]
+        cat_total_p += cat_metrics["precision"]
+        cat_total_r += cat_metrics["recall"]
+        cat_total_f1 += cat_metrics["f1"]
 
         sample_result = {
             "sample_id": i,
@@ -93,6 +116,9 @@ def run_evaluation(limit: int | None = None, out_path: Path = DEFAULT_OUT) -> Di
             "precision": round(metrics["precision"], 4),
             "recall": round(metrics["recall"], 4),
             "f1": round(metrics["f1"], 4),
+            "category_precision": round(cat_metrics["precision"], 4),
+            "category_recall": round(cat_metrics["recall"], 4),
+            "category_f1": round(cat_metrics["f1"], 4),
             "latency_s": round(elapsed, 2),
             "error": error,
         }
@@ -101,8 +127,7 @@ def run_evaluation(limit: int | None = None, out_path: Path = DEFAULT_OUT) -> Di
         status = "✓" if exact else "✗"
         print(
             f"[{i:3d}/{len(dataset)}] {status}  "
-            f"P={metrics['precision']:.2f}  R={metrics['recall']:.2f}  "
-            f"F1={metrics['f1']:.2f}  ({elapsed:.1f}s)"
+            f"exact F1={metrics['f1']:.2f}  cat F1={cat_metrics['f1']:.2f}  ({elapsed:.1f}s)"
         )
 
     n = len(dataset)
@@ -112,17 +137,27 @@ def run_evaluation(limit: int | None = None, out_path: Path = DEFAULT_OUT) -> Di
         "macro_precision": round(total_p / n, 4),
         "macro_recall": round(total_r / n, 4),
         "macro_f1": round(total_f1 / n, 4),
+        "category_macro_precision": round(cat_total_p / n, 4),
+        "category_macro_recall": round(cat_total_r / n, 4),
+        "category_macro_f1": round(cat_total_f1 / n, 4),
+        "avg_latency_s": round(total_latency / n, 2),
     }
 
-    print("\n" + "=" * 50)
+    print("\n" + "=" * 56)
     print("AGGREGATE RESULTS")
-    print("=" * 50)
-    print(f"  Samples evaluated : {n}")
-    print(f"  Exact match rate  : {aggregate['exact_match_rate']:.1%}")
-    print(f"  Macro precision   : {aggregate['macro_precision']:.3f}")
-    print(f"  Macro recall      : {aggregate['macro_recall']:.3f}")
-    print(f"  Macro F1          : {aggregate['macro_f1']:.3f}")
-    print("=" * 50)
+    print("=" * 56)
+    print(f"  Samples evaluated      : {n}")
+    print(f"  Avg latency / sample   : {aggregate['avg_latency_s']:.2f} s")
+    print(f"  Exact match rate       : {aggregate['exact_match_rate']:.1%}")
+    print("  -- Exact code match --")
+    print(f"  Macro precision        : {aggregate['macro_precision']:.3f}")
+    print(f"  Macro recall           : {aggregate['macro_recall']:.3f}")
+    print(f"  Macro F1               : {aggregate['macro_f1']:.3f}")
+    print("  -- 3-char category match --")
+    print(f"  Macro precision        : {aggregate['category_macro_precision']:.3f}")
+    print(f"  Macro recall           : {aggregate['category_macro_recall']:.3f}")
+    print(f"  Macro F1               : {aggregate['category_macro_f1']:.3f}")
+    print("=" * 56)
 
     report = {"aggregate": aggregate, "samples": sample_results}
     with open(out_path, "w") as f:

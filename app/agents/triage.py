@@ -1,8 +1,7 @@
-from PIL import Image
-import numpy as np
 from app.utils.logger import get_logger
 from app.graph.schema import WorkflowState
 from app.utils.prompts import triage_prompt
+from app.utils.transforms import blank_image
 from langsmith.run_helpers import traceable
 from app.agents.core import MedicalAgentBase
 from app.utils.model_registry import get_vision_model
@@ -19,11 +18,7 @@ class TriageAgent(MedicalAgentBase):
 
     @traceable
     def infer(self, state: WorkflowState) -> str:
-        image = [
-            state.payload["image"]
-            if "image" in state.payload
-            else Image.fromarray(np.zeros((224, 224, 3), dtype=np.uint8))
-        ]
+        image = [state.payload.get("image") or blank_image()]
         note = state.payload.get("note", None)
         logger.info(
             "TriageAgent.infer — has_image: %s, has_note: %s",

@@ -5,6 +5,7 @@ from typing import List, Optional, Literal, Union, TypeAlias
 class DiagnosticCode(BaseModel):
     code: str
     description: str
+    evidence: Optional[str] = None
 
 
 class CodingResponse(BaseModel):

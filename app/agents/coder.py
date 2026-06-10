@@ -1,12 +1,10 @@
-from PIL import Image
-import numpy as np
 import json
 from app.agents.core import MedicalAgentBase
 from app.utils.model_registry import get_vision_model
 from app.utils.prompts import coding_prompt
 from app.graph.schema import WorkflowState
 from app.utils.logger import get_logger
-from app.utils.transforms import extract_json
+from app.utils.transforms import extract_json, blank_image
 from langsmith.run_helpers import traceable
 from mlx_vlm.prompt_utils import apply_chat_template
 from mlx_vlm import generate
@@ -22,11 +20,7 @@ class DiagnosticCoderAgent(MedicalAgentBase):
     @traceable
     def infer(self, state: WorkflowState) -> str:
         clinical_note = state.payload.get("clinical_note", None)
-        image = [
-            state.payload["image"]
-            if "image" in state.payload
-            else Image.fromarray(np.zeros((224, 224, 3), dtype=np.uint8))
-        ]
+        image = [state.payload.get("image") or blank_image()]
         logger.info(
             "DiagnosticCoderAgent.infer — has_note: %s, has_image: %s",
             clinical_note is not None,
